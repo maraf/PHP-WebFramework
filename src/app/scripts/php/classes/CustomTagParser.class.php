@@ -390,7 +390,7 @@ class CustomTagParser {
         $this->PropertyAttr = '';
         $this->PropertyUse = 'get';
         
-        $result = preg_replace_callback($this->PROP_RE, array(&$this, 'parsecproperty'), $value);
+        $result = preg_replace_callback($this->ATT_PROPERTY_RE, array(&$this, 'parsecproperty'), $value);
         self::checkPregError("parsecproperty", $value);
 
         if ($result == NULL) {
