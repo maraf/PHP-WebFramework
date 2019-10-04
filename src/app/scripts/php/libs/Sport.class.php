@@ -4051,7 +4051,7 @@
 
         private function sortByStringToSqlParams($sortBy, $sorting) {
             $return = '';
-            $sorts = split(',', $sortBy);
+            $sorts = explode(',', $sortBy);
             foreach ($sorts as $sort) {
                 if ($return != '') {
                     $return .= ', ';
@@ -4202,7 +4202,7 @@
         }
 
         public function setSeasonUrl($url) {
-            $url1 = split('-', $url);
+            $url1 = explode('-', $url);
             $row = parent::db()->fetchAll('select `id` from `w_sport_season` where `start_year` = ' . $url1[0] . ' and `end_year` = ' . $url1[1] . (self::getProjectId() != '-1' ? ' and `project_id` = ' . self::getProjectId() : '') . ';');
             if (count($row) == 1) {
                 self::setSeasonId($row[0]['id']);
