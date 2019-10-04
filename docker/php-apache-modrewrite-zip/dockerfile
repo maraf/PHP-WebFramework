@@ -1,4 +1,4 @@
-FROM php:5.6.36-apache
+FROM php:7.2-apache
 
 RUN sh -c 'apt-get update \
     && apt-get install -y zlib1g-dev \
@@ -6,7 +6,7 @@ RUN sh -c 'apt-get update \
     && a2enmod rewrite \
     && docker-php-ext-install mysqli'
 
-RUN curl -fsSL 'https://xdebug.org/files/xdebug-2.5.5.tgz' -o xdebug.tar.gz \
+RUN curl -fsSL 'https://xdebug.org/files/xdebug-2.7.2.tgz' -o xdebug.tar.gz \
     && mkdir -p xdebug \
     && tar -xf xdebug.tar.gz -C xdebug --strip-components=1 \
     && rm xdebug.tar.gz \
