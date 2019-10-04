@@ -24,7 +24,11 @@ if (array_key_exists('fid', $_REQUEST)) {
     if (count($file) == 1) {
         // Try cached file ...
         $currentEtag = sha1($file[0]['content']);
-        $requestEtag = trim($_SERVER['HTTP_IF_NONE_MATCH']);
+        $requestEtag = "";
+        if (array_key_exists('HTTP_IF_NONE_MATCH', $_SERVER)) {
+            $requestEtag = trim($_SERVER['HTTP_IF_NONE_MATCH']);
+        }
+
 
         header("Cache-Control: private, max-age=10800, pre-check=10800");
         header("Etag: " . $currentEtag);
@@ -46,6 +50,7 @@ if (array_key_exists('fid', $_REQUEST)) {
         $file[0]['content'] = str_replace("~/", INSTANCE_URL, $file[0]['content']);
 
         // Zipovani ...
+        $encoding = false;
         /* $acceptEnc = $_SERVER['HTTP_ACCEPT_ENCODING'];
         if(headers_sent()) {
           $encoding = false;
