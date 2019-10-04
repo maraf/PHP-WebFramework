@@ -100,7 +100,7 @@ if (array_key_exists('fid', $_REQUEST)) {
         header("Expires: " . date(DATE_RFC822, strtotime("+7 day")));
         header("Last-Modified: " . gmdate("D, d M Y H:i:s", $updTime) . " GMT");
         // echo $updTime.' - '.getenv("HTTP_IF_MODIFIED_SINCE").' ; ';
-        if ($_SERVER["HTTP_IF_MODIFIED_SINCE"] && $updTime <= strtotime($_SERVER["HTTP_IF_MODIFIED_SINCE"])) {
+        if (array_key_exists("HTTP_IF_MODIFIED_SINCE", $_SERVER) && $updTime <= strtotime($_SERVER["HTTP_IF_MODIFIED_SINCE"])) {
             //header("HTTP/1.1 304 Not Modified");
             header('Last-Modified: ' . $_SERVER['HTTP_IF_MODIFIED_SINCE'], true, 304);
             exit;
@@ -256,7 +256,7 @@ if (array_key_exists('fid', $_REQUEST)) {
 
         $updTime = filemtime($filePath);
         //echo $updTime.' - '.getenv("HTTP_IF_MODIFIED_SINCE").' ; ';
-        if ($_SERVER["HTTP_IF_MODIFIED_SINCE"] && $updTime <= strtotime($_SERVER["HTTP_IF_MODIFIED_SINCE"])) {
+        if (array_key_exists("HTTP_IF_MODIFIED_SINCE", $_SERVER) && $updTime <= strtotime($_SERVER["HTTP_IF_MODIFIED_SINCE"])) {
             //header("HTTP/1.1 304 Not Modified");
             header('Last-Modified: ' . $_SERVER['HTTP_IF_MODIFIED_SINCE'], true, 304);
             exit;
