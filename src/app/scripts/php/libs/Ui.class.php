@@ -394,7 +394,7 @@
 
 			if ($model->isRender()) {
 				$formName = $model->requestKey($name);
-				$modelValue = $model->get($name);
+				$modelValue = $model->get($name, -1);
 
 				if (!is_array($modelValue)) {
 					$modelValue = explode(",", $modelValue);
