@@ -822,7 +822,7 @@
          */
         public function cache($cache) {
             global $webObject;
-            $webObject->cache($cache);
+            $webObject->cache($cache, 60);
         }
         
         public function usingObject($content, $prefix, $class) {
