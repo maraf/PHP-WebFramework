@@ -289,7 +289,7 @@
 
 		public function filter($template, $session = "") {
             $model = parent::getEditModel();
-			$session = split(",", $session);
+			$session = explode(",", $session);
 
 			if ($model->isSubmit()) {
 				$model->request($_POST);
