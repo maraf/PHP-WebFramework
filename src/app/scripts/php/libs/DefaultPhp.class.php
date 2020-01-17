@@ -439,7 +439,7 @@
             }
             
             //echo ' '.$className.'<br />';
-            $tmp = new $className();
+            $tmp = new $className("");
             $xmlPath = str_replace(".", "/", $classDir)."/".$tmp->getTagLibXml();
             if (is_file(APP_SCRIPTS_PATH . $xmlPath)) {
                 $xml = self::getXml(APP_SCRIPTS_PATH . $xmlPath);
