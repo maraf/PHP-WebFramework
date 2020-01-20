@@ -434,8 +434,11 @@ class CustomTagParser {
         else if (preg_last_error() == PREG_BAD_UTF8_ERROR) {
             $message = "Bad UTF8 error";
         }
-        else if (preg_last_error() == PREG_BAD_UTF8_ERROR) {
+        else if (preg_last_error() == PREG_BAD_UTF8_OFFSET_ERROR) {
             $message = "Bad UTF8 offset error";
+        }
+        else if (preg_last_error() == PREG_JIT_STACKLIMIT_ERROR) {
+            $message = "JIT stack limit error";
         }
 
         if ($message != null) {
