@@ -17,8 +17,6 @@ services:
     build:
       context: .
       dockerfile: docker/php-apache-modrewrite-zip/dockerfile
-    ports:
-      - "8082:80"
     expose:
       - "9000"
     volumes:
@@ -35,10 +33,12 @@ services:
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
-    ports:
-      - "8081:80"
+    environment:
+      - PMA_USER=root
+      - PMA_PASSWORD=1234
+      - PMA_ABSOLUTE_URI=http://localhost:8080/phpmyadmin
     links:
-        - mysql:db
+      - mysql:db
         
   mysql:
     image: mysql:8.0.19
