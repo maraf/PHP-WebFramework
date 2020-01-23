@@ -22,7 +22,9 @@
             "port": 9000,
             // Path to your source in container
             "pathMappings": {
-                "/var/www/html": "${workspaceFolder}/src"
+                "/var/www/html/app": "${workspaceFolder}/src/app",
+                "/var/www/html/user": "${workspaceFolder}/temp/instance/user",
+                "/var/www/html/test": "${workspaceFolder}/test"
             },
             "xdebugSettings": {
                 "max_data": 65535,
