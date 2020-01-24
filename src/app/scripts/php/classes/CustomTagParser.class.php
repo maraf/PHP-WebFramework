@@ -419,25 +419,26 @@ class CustomTagParser {
         global $phpObject;
 
         $message = null;
-        if (preg_last_error() == PREG_NO_ERROR) {
+        $error = preg_last_error();
+        if ($error == PREG_NO_ERROR) {
             // $message = "There is no error.";
         }
-        else if (preg_last_error() == PREG_INTERNAL_ERROR) {
+        else if ($error == PREG_INTERNAL_ERROR) {
             $message = "There is an internal error";
         }
-        else if (preg_last_error() == PREG_BACKTRACK_LIMIT_ERROR) {
+        else if ($error == PREG_BACKTRACK_LIMIT_ERROR) {
             $message = "Backtrack limit was exhausted";
         }
-        else if (preg_last_error() == PREG_RECURSION_LIMIT_ERROR) {
+        else if ($error == PREG_RECURSION_LIMIT_ERROR) {
             $message = "Recursion limit was exhausted";
         }
-        else if (preg_last_error() == PREG_BAD_UTF8_ERROR) {
+        else if ($error == PREG_BAD_UTF8_ERROR) {
             $message = "Bad UTF8 error";
         }
-        else if (preg_last_error() == PREG_BAD_UTF8_OFFSET_ERROR) {
+        else if ($error == PREG_BAD_UTF8_OFFSET_ERROR) {
             $message = "Bad UTF8 offset error";
         }
-        else if (preg_last_error() == PREG_JIT_STACKLIMIT_ERROR) {
+        else if ($error == PREG_JIT_STACKLIMIT_ERROR) {
             $message = "JIT stack limit error";
         }
 
