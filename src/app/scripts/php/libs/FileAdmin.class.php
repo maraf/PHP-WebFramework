@@ -476,6 +476,14 @@
 
 			$items = array_merge($parentResult, $resultDirs, $resultFiles);
 			if ($grouped == false) {
+				if (is_array($orderBy)) {
+					if (array_key_exists("", $orderBy)) {
+						$orderBy = $orderBy[""];
+					} else {
+						$orderBy = "name";
+					}
+				}
+
 				usort($items, function($a, $b) use ($orderBy) { return strcmp($a[$orderBy], $b[$orderBy]); });
 			}
 
