@@ -137,5 +137,13 @@
       Vlastnost URL aktuálního souboru.
     </comment>
   </property>
+  <property>
+  	<name>AllImageTypes</name>
+  	<getFunction>getAllImageTypes</getFunction>
+    <comment>
+      Vrací pole s id všech obrázkových typů souborů.
+      Vhodné pro filtrování souborů.
+    </comment>
+  </property>
 </taglib>
 
