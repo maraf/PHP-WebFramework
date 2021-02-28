@@ -30,7 +30,7 @@
 
 		public function newButton($pageId, $text, $paramName = "id", $param = array()) {
 			$param[$paramName] = "new";
-			return parent::web()->makeAnchor($pageId, $text, false, "button", "", "", "", "", "", true, $param);
+			return parent::web()->makeAnchor($pageId, $text, false, "button", "", "", "", "", "", $param);
 		}
 
 		public function saveButtons($saveName = "save", $saveParam = array(), $closePageId = "", $closeParam = array(), $message = "") {
@@ -52,7 +52,7 @@
 				. "<button name='$saveName' value='save-close'>"
 					. $saveCloseText
 				. "</button> "
-				. parent::web()->makeAnchor($closePageId, $closeText, false, "button", "", "", "", "", "", true, $closeParam);
+				. parent::web()->makeAnchor($closePageId, $closeText, false, "button", "", "", "", "", "", $closeParam);
 
 				return $result;
 			}

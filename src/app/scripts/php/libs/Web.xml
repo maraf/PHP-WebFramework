@@ -184,11 +184,6 @@
       <prefix />
       <comment>Seznam parametrů, které se mají do URL přidat.</comment>
     </attribute>
-    <attribute>
-      <name>addEmptyParams</name>
-      <type>bool</type>
-      <default>true</default>
-    </attribute>
     <anyAttribute>
       <comment>Pouze pro zpětnou kompatibilitu. Vhodnější použít 'param-*'.</comment>
     </anyAttribute>
@@ -218,11 +213,6 @@
       <name>param</name>
       <prefix />
       <comment>Seznam parametrů, které se mají do URL přidat.</comment>
-    </attribute>
-    <attribute>
-      <name>addEmptyParams</name>
-      <type>bool</type>
-      <default>true</default>
     </attribute>
     <comment>
       Vytvoří URL, která uvnitř těla dostupná v propertě 'web:url'.
@@ -300,11 +290,6 @@
     </attribute>
     <attribute>
       <name>type</name>
-    </attribute>
-    <attribute>
-      <name>addEmptyParams</name>
-      <type>bool</type>
-      <default>true</default>
     </attribute>
     <anyAttribute />
     <comment>

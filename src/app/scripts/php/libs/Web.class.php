@@ -1798,7 +1798,7 @@
             return '<div class="crumb-menu">' . $return . '</div>';
         }
 
-        public function getPageUrl($pageId, $languageId = false, $isAbsolute = false, $params = array(), $addEmptyParams = true, $anything = array()) {
+        public function getPageUrl($pageId, $languageId = false, $isAbsolute = false, $params = array(), $anything = array()) {
             $languageId = (!$languageId) ? $this->LanguageId : $languageId;
             $isAbsolute = (!$isAbsolute) ? false : true;
 
@@ -1814,10 +1814,6 @@
                         $key = substr($key, 6);
                     }
 
-                    if (!$addEmptyParams && $value == "") {
-                        continue;
-                    }
-
                     $url = UrlUtils::addParameter($url, $key, $value);
                 }
 
@@ -1829,10 +1825,10 @@
 
         private $providedPageUrl;
 
-        public function providePageUrl($template, $pageId, $languageId, $isAbsolute = false, $params = array(), $addEmptyParams = true) {
+        public function providePageUrl($template, $pageId, $languageId, $isAbsolute = false, $params = array()) {
             $oldUrl = $this->providedPageUrl;
             try {
-                $this->providedPageUrl = $this->getPageUrl($pageId, $languageId, $isAbsolute, $params, $addEmptyParams);
+                $this->providedPageUrl = $this->getPageUrl($pageId, $languageId, $isAbsolute, $params);
                 if (is_callable($template)) {
                     return $template();
                 }
@@ -1855,7 +1851,7 @@
          *  @return html anchor               
          *
          */
-        public function makeAnchor($pageId, $text = false, $languageId = false, $class = "", $activeClass = '', $id = "", $target = "", $rel = "", $type = '', $addEmptyParams = true, $params = array()) {
+        public function makeAnchor($pageId, $text = false, $languageId = false, $class = "", $activeClass = '', $id = "", $target = "", $rel = "", $type = '', $params = array()) {
             global $dbObject;
             $languageId = (!$languageId) ? $this->LanguageId : $languageId;
 
@@ -1881,10 +1877,6 @@
                 foreach ($params as $key => $value) {
                     if (strpos($key, 'param-') === 0) {
                         $key = substr($key, 6);
-                    }
-
-                    if (!$addEmptyParams && $value == "") {
-                        continue;
                     }
 
                     $url = UrlUtils::addParameter($url, $key, $value);
@@ -1921,9 +1913,9 @@
             return $this->providedPageUrl;
         }
 
-        public function makeAnchorFullTag($template, $pageId, $languageId = false, $class = "", $activeClass = '', $id = "", $target = "", $rel = "", $type = '', $addEmptyParams = true, $params = false) {
+        public function makeAnchorFullTag($template, $pageId, $languageId = false, $class = "", $activeClass = '', $id = "", $target = "", $rel = "", $type = '', $params = false) {
             $text = $template();
-            return $this->makeAnchor($pageId, $text, $languageId, $class, $activeClass, $id, $target, $rel, $type, $addEmptyParams, $params);
+            return $this->makeAnchor($pageId, $text, $languageId, $class, $activeClass, $id, $target, $rel, $type, $params);
         }
 
         /**
