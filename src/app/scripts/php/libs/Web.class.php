@@ -2049,9 +2049,8 @@
          * 	@return		none
          *
          */
-        public function redirectTo($pageId, $langId = false, $browser = false, $ip = false, $copyParameters = false, $param = array(), $addEmptyParams = true) {
+        public function redirectTo($pageId, $langId = false, $browser = false, $ip = false, $copyParameters = false, $param = array()) {
             global $webObject;
-            global $phpObject;
 
             if ($langId != false) {
                 $href = $webObject->composeUrl($pageId, $langId, true);
@@ -2086,10 +2085,6 @@
 
             if (count($param) > 0) {
                 foreach ($param as $key => $value) {
-                    if (!$addEmptyParams && $value == "") {
-                        continue;
-                    }
-
                     $href = UrlUtils::addParameter($href, $key, $value);
                 }
             }
