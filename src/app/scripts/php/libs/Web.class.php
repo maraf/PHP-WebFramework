@@ -1851,7 +1851,7 @@
          *  @return html anchor               
          *
          */
-        public function makeAnchor($pageId, $text = false, $languageId = false, $class = "", $activeClass = '', $id = "", $target = "", $rel = "", $type = '', $params = array()) {
+        public function makeAnchor($pageId, $text = false, $languageId = false, $class = "", $activeClass = '', $id = "", $target = "", $rel = "", $type = '', $params = [], $attributes = []) {
             global $dbObject;
             $languageId = (!$languageId) ? $this->LanguageId : $languageId;
 
@@ -1875,10 +1875,6 @@
                 $url = self::composeUrl($pageId, $languageId);
 
                 foreach ($params as $key => $value) {
-                    if (strpos($key, 'param-') === 0) {
-                        $key = substr($key, 6);
-                    }
-
                     $url = UrlUtils::addParameter($url, $key, $value);
                 }
 
@@ -1895,6 +1891,8 @@
                 if ($rel) {
                     $return .= " rel=\"" . $rel . "\"";
                 }
+
+                $return .= " " . $this->joinAttributes($attributes);
                 if ($text != false) {
                     $return .= $type == 'button' ? ' onclick="window.location.href=\'' . $url . '\';">' . $text . '</button>' : ">" . $text . "</a>";
                 } else {
